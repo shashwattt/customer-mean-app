@@ -3,9 +3,12 @@
 This project is initiatilly generated from [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 Integrated with [express](https://expressjs.com/) and [mongodb library](http://mongoosejs.com/) and [Angular Material](https://material.angular.io/). 
 
-Its a simple customer management feature viz Add, update & Delete
+Its has simple customer management feature viz Add, update & Delete
 
 This project is made for learning and testing.
+
+
+Hosted on [AWS EC2](https://aws.amazon.com/ec2/) instance - [View Running Application](http://13.127.62.237:3030/)
 
 ## Features
 - [x] Angular 5
