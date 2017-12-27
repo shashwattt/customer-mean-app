@@ -1,0 +1,38 @@
+.create-cust-container {
+  margin-top: 3vh;
+}
+.cust-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.cust-form-container > *{
+  width: 70%;
+  display: block
+}
+.cust-form-container div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+div mat-form-field, button{
+  width: 48%
+}
+
+.add-more-address{
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  right: 7vw;
+  bottom: 7vh;
+}
+
+.remove-address{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0; 
+  bottom: 10px;
+}

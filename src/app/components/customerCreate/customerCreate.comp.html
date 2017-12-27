@@ -1,0 +1,59 @@
+<div class="create-cust-container">
+
+  <form class="cust-form-container" (ngSubmit)="onSubmitForm(customerForm)" [formGroup]="customerForm">
+    <mat-form-field>
+      <input matInput placeholder="Full Name" [formControl]="fullName" required [(ngModel)]="model.fullName">
+    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Mobile number" (keypress)="numberValidation($event)" [(ngModel)]="model.mobileNumber" maxlength="10"
+          [formControl]="mobileNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Phone number" (keypress)="numberValidation($event)" [(ngModel)]="model.phoneNumber" maxlength="11"
+          [formControl]="phoneNumber" required>
+      </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="DOB - MM/DD/YYYY" [(ngModel)]="model.dob" [formControl]="dob" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [(ngModel)]="model.email" [formControl]="email" required>
+    </mat-form-field>
+  </div>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let add of model.addressList; index as i">{{add.flat}}, {{add.street}}, {{add.state}}, {{add.pincode}}  
+          <button (click)="model.addressList.splice(i,1)" class="remove-address" mat-mini-fab color="warn"> <mat-icon>delete_forever</mat-icon> </button>
+        </mat-list-item>
+      </mat-list>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Flat" [formControl]="flat" [(ngModel)]="model.flat" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Street" [formControl]="street" [(ngModel)]="model.street" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="State" [formControl]="state" [(ngModel)]="model.state" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input (keypress)="numberValidation($event)" matInput placeholder="Pincode" [(ngModel)]="model.pincode" maxlength="6" [formControl]="pincode"
+          required>
+      </mat-form-field>
+      <button class="add-more-address" mat-fab mat-raised-button color="primary" [disabled]="pincode.invalid || state.invalid || street.invalid || flat.invalid"
+        (click)="addAdress()"><mat-icon aria-label="Add more Addresses">add</mat-icon></button>
+    </div>
+    <div>
+      <button mat-raised-button color="accent" [disabled]="determineDisable()">Submit</button>
+      <button mat-raised-button color="accent" (click)="cancelCreate()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,55 @@
+<div class="report-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="CustomerName">
+            <mat-header-cell *matHeaderCellDef> CustomerName </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.CustomerName}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="Mobile">
+            <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Mobile}} </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Phone">
+            <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Phone}} </mat-cell>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+          </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="NoOfBills">
+                <mat-header-cell *matHeaderCellDef> NoOfBills </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.NoOfBills}} </mat-cell>
+              </ng-container>
+
+                <!-- Symbol Column -->
+          <ng-container matColumnDef="Amount">
+              <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.Amount}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="AvgAmount">
+                <mat-header-cell *matHeaderCellDef> AvgAmount </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.AvgAmount}} </mat-cell>
+              </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      
+        <mat-paginator #paginator
+                       [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+
+
+       
+      </div>

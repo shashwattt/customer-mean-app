@@ -1,0 +1,68 @@
+<div class="example-container mat-elevation-z8">
+  <div class="main_button--new-customer">
+      <button (click)="addNewCustomer()" mat-raised-button color="accent">+ Add New Customer</button>
+      <button (click)="deleteCustomers()" [disabled]="selection.selected.length < 1" mat-raised-button color="accent" >- Delete</button>  
+  </div>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="select">
+          <mat-header-cell class="cus-header--background check-box-width" *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="check-box-width">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null;getAllSelection()"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> E mail </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+      </ng-container>
+  
+      <ng-container  matColumnDef="Phone">
+        <mat-header-cell class="phone-box-width" *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+        <mat-cell class="phone-box-width" *matCellDef="let element"> {{element.Phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Mobile">
+          <mat-header-cell class="phone-box-width" *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
+          <mat-cell class="phone-box-width" *matCellDef="let element"> {{element.Mobile}} </mat-cell>
+        </ng-container>
+  
+      <ng-container  matColumnDef="DOB">
+        <mat-header-cell class="phone-box-width" *matHeaderCellDef mat-sort-header> DOB </mat-header-cell>
+        <mat-cell class="phone-box-width" *matCellDef="let element"> {{element.DOB | date}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Address">
+          <mat-header-cell class="address-box-width" *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+          <mat-cell class="address-box-width" *matCellDef="let element"> {{getAllAddresses(element.Addresses)}} </mat-cell>
+        </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="updateCustomer(row)">
+    </mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>

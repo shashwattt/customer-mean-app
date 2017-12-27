@@ -1,0 +1,42 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    min-width: 300px;
+    padding-top: 3vh;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 90vh;
+  }
+  
+  .mat-column-select {
+    overflow: visible;
+  }
+
+  mat-header-row{
+    background-color: rgba(0, 0, 0,.04)
+  }
+
+  .main_button--new-customer{
+    position: absolute;
+    right: 0;
+    top: 3vh;
+}
+
+.check-box-width{
+  flex:.3;
+}
+
+.address-box-width{
+  flex:1.5;
+}
+
+.phone-box-width{
+  flex:.8;
+}
+
+mat-row{
+  cursor: pointer;
+}

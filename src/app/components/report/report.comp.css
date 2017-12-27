@@ -1,0 +1,15 @@
+.report-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    padding-top:3vh;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  mat-header-row{
+    background-color: rgba(0, 0, 0,.04)
+  }
